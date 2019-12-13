@@ -1,0 +1,6 @@
+[merge "sfdcm"]
+	name = Merge Driver for Salesforce Metadata
+	driver = sfdcm %O %A %B %P
+[merge "merge-packages"]
+  name = A custom merge driver for Salesforce package.xml
+  driver = smp -p %A -p %B -o %A

@@ -1,0 +1,15 @@
+*.object-meta.xml merge=sfdcm
+*.profile-meta.xml merge=sfdcm
+*.assignmentRules-meta.xml merge=sfdcm
+*.sharingRules-meta.xml merge=sfdcm
+*.permissionset-meta.xml merge=sfdcm
+*.workflow-meta.xml merge=sfdcm
+*.objectTranslations-meta.xml merge=sfdcm
+*.translations-meta.xml merge=sfdcm
+*.labels-meta.xml merge=sfdcm
+*.standardValueSet-meta.xml merge=sfdcm
+*.globalValueSet-meta.xml merge=sfdcm
+package.xml merge=merge-packages
+destructiveChangesPost.xml merge=merge-packages
+destructiveChangesPre.xml merge=merge-packages
+destructiveChanges.xml merge=merge-packages
