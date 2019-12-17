@@ -47,8 +47,17 @@
     "commands": "./lib/commands",
     "bin": "sfdx",
     "topics": {
-      "hello": {
-        "description": "Commands to say hello."
+      "ci": {
+        "description": "Continuous Integration command namespace"
+      },
+      "ci:setup": {
+        "description": "Continuous Integration setup command sub namespace"
+      },
+      "vcs": {
+        "description": "Version Control System command namespace"
+      },
+      "vcs:setup": {
+        "description": "Version Control System setup command sub namespace"
       }
     },
     "devPlugins": [
