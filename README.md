@@ -1,4 +1,4 @@
-sfdx-plugin-ci
+sfdx-plugin-ci [![CircleCI](https://circleci.com/gh/scolladon/sfdx-plugin-ci/tree/master.svg?style=svg)](https://circleci.com/gh/scolladon/sfdx-plugin-ci/tree/master)
 ==============
 
 CI Scaffolder and Helper plugin
