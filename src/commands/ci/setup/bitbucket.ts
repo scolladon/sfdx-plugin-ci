@@ -27,7 +27,7 @@ export default class Bitbucket extends SfdxCommand {
   public async run(): Promise<AnyJson> {
     if (!fs.existsSync(path.join(path.resolve(this.flags.output)))) {
       this.ux.log(messages.getMessage('folderDoNotExist', [this.flags.output]));
-      return null
+      return null;
     }
     fs.copyFile(path.resolve(templateFolder, templateFile), path.resolve(this.flags.output, templateFile), err => {
       if (err) {
@@ -35,6 +35,6 @@ export default class Bitbucket extends SfdxCommand {
       }
       this.ux.log(messages.getMessage('successCopy', [templateFile, path.resolve(this.flags.output)]));
     });
-    return null
+    return null;
   }
 }
