@@ -1,11 +1,9 @@
-sfdx-plugin-ci [![CircleCI](https://circleci.com/gh/scolladon/sfdx-plugin-ci/tree/master.svg?style=svg)](https://circleci.com/gh/scolladon/sfdx-plugin-ci/tree/master) [![codecov](https://codecov.io/gh/scolladon/sfdx-plugin-ci/branch/master/graph/badge.svg)](https://codecov.io/gh/scolladon/sfdx-plugin-ci)
+sfdx-plugin-ci [![CircleCI](https://circleci.com/gh/scolladon/sfdx-plugin-ci/tree/master.svg?style=shield)](https://circleci.com/gh/scolladon/sfdx-plugin-ci/tree/master) [![codecov](https://codecov.io/gh/scolladon/sfdx-plugin-ci/branch/master/graph/badge.svg)](https://codecov.io/gh/scolladon/sfdx-plugin-ci)
 ==============
 
 CI Scaffolder and Helper plugin
 
 [![Version](https://img.shields.io/npm/v/sfdx-plugin-ci.svg)](https://npmjs.org/package/sfdx-plugin-ci)
-[![CircleCI](https://circleci.com/gh/scolladon/sfdx-plugin-ci/tree/master.svg?style=shield)](https://circleci.com/gh/scolladon/sfdx-plugin-ci/tree/master)
-[![Codecov](https://codecov.io/gh/scolladon/sfdx-plugin-ci/branch/master/graph/badge.svg)](https://codecov.io/gh/scolladon/sfdx-plugin-ci)
 [![Greenkeeper](https://badges.greenkeeper.io/scolladon/sfdx-plugin-ci.svg)](https://greenkeeper.io/)
 [![Known Vulnerabilities](https://snyk.io/test/github/scolladon/sfdx-plugin-ci/badge.svg)](https://snyk.io/test/github/scolladon/sfdx-plugin-ci)
 [![Downloads/week](https://img.shields.io/npm/dw/sfdx-plugin-ci.svg)](https://npmjs.org/package/sfdx-plugin-ci)
