@@ -1,8 +1,8 @@
 import { flags, SfdxCommand } from '@salesforce/command';
 import { Messages, SfdxError } from '@salesforce/core';
 import { AnyJson } from '@salesforce/ts-types';
-import * as fs from 'fs';
 import { execSync } from 'child_process';
+import * as fs from 'fs';
 import * as fse from 'fs-extra';
 import * as path from 'path';
 
@@ -10,18 +10,6 @@ import * as path from 'path';
 Messages.importMessagesDirectory(__dirname);
 
 const messages = Messages.loadMessages('sfdx-plugin-ci', 'jwt');
-
-const CSR_OPTIONS = {
-  hash: 'sha512',
-  subject: {
-    countryName: 'FR',
-    stateOrProvinceName: 'France',
-    localityName: 'Paris',
-    organizationName: 'sfdx',
-    organizationalUnitName: 'sfdx:auth:jwt',
-    emailAddress: 'sfdx@jwt.auth'
-  }
-};
 
 const tmpFolder = 'tmp';
 
@@ -46,11 +34,11 @@ export default class Jwt extends SfdxCommand {
     }
     fse.ensureDirSync(tmpFolder);
     try {
-      execSync(`openssl genrsa -des3 -passout pass:x -out ${path.join(tmpFolder, 'server.pass.key')} 2048 2>/dev/null`)
-      execSync(`openssl rsa -passin pass:x -in ${path.join(tmpFolder, 'server.pass.key')} -out ${path.join(tmpFolder, 'server.key')}  2>/dev/null`)
-      execSync(`openssl req -new -key ${path.join(tmpFolder, 'server.key')} -out ${path.join(tmpFolder, 'server.csr')} -subj "/C=FR/ST=FRANCE/L=PARIS/O=sfdx/OU=sfdx:auth:jwt/CN=jwt/emailAddress=sfdx@jwt.auth"  2>/dev/null`)
-      execSync(`openssl x509 -req -sha256 -days 365 -in ${path.join(tmpFolder, 'server.csr')} -signkey ${path.join(tmpFolder, 'server.key')} -out ${path.join(this.flags.output, this.flags.env + '.crt')}  2>/dev/null`)
-      execSync(`openssl aes-256-cbc -salt -e -in ${path.join(tmpFolder, 'server.key')} -out ${path.join(this.flags.output, this.flags.env + '_server.key.enc')} -pass pass:${this.flags.password}  2>/dev/null`)
+      execSync(`openssl genrsa -des3 -passout pass:x -out ${path.join(tmpFolder, 'server.pass.key')} 2048 2>/dev/null`);
+      execSync(`openssl rsa -passin pass:x -in ${path.join(tmpFolder, 'server.pass.key')} -out ${path.join(tmpFolder, 'server.key')}  2>/dev/null`);
+      execSync(`openssl req -new -key ${path.join(tmpFolder, 'server.key')} -out ${path.join(tmpFolder, 'server.csr')} -subj "/C=FR/ST=FRANCE/L=PARIS/O=sfdx/OU=sfdx:auth:jwt/CN=jwt/emailAddress=sfdx@jwt.auth"  2>/dev/null`);
+      execSync(`openssl x509 -req -sha256 -days 365 -in ${path.join(tmpFolder, 'server.csr')} -signkey ${path.join(tmpFolder, 'server.key')} -out ${path.join(this.flags.output, this.flags.env + '.crt')}  2>/dev/null`);
+      execSync(`openssl aes-256-cbc -salt -e -in ${path.join(tmpFolder, 'server.key')} -out ${path.join(this.flags.output, this.flags.env + '_server.key.enc')} -pass pass:${this.flags.password}  2>/dev/null`);
     } catch (ex) {
       throw new SfdxError(messages.getMessage('errorKeyGeneration'));
     }
