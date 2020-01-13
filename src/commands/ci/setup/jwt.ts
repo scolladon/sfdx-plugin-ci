@@ -1,8 +1,9 @@
 import { flags, SfdxCommand } from '@salesforce/command';
 import { Messages, SfdxError } from '@salesforce/core';
 import { AnyJson } from '@salesforce/ts-types';
+import { execSync } from 'child_process';
 import * as fs from 'fs';
-import * as node_openssl from 'node-openssl-cert';
+import * as fse from 'fs-extra';
 import * as path from 'path';
 
 // Initialize Messages with the current plugin directory
@@ -10,17 +11,7 @@ Messages.importMessagesDirectory(__dirname);
 
 const messages = Messages.loadMessages('sfdx-plugin-ci', 'jwt');
 
-const CSR_OPTIONS = {
-  hash: 'sha512',
-  subject: {
-    countryName: 'FR',
-    stateOrProvinceName: 'France',
-    localityName: 'Paris',
-    organizationName: 'sfdx',
-    organizationalUnitName: 'sfdx:auth:jwt',
-    emailAddress: 'sfdx@jwt.auth'
-  }
-};
+const tmpFolder = 'tmp';
 
 export default class Jwt extends SfdxCommand {
 
@@ -41,45 +32,19 @@ export default class Jwt extends SfdxCommand {
       this.ux.log(messages.getMessage('folderDoNotExist', [this.flags.output]));
       return null;
     }
-
-    const openssl = new node_openssl();
-    const results = [];
-    openssl.generateRSAPrivateKey({
-      encryption: {
-        password: this.flags.password,
-        cipher: 'des3'
-      },
-      rsa_keygen_bits: 2048,
-      rsa_keygen_pubexp: 65537,
-      format: 'PKCS8'
-    }, (errPrivatekey, key, cmdKEY) => {
-      if (errPrivatekey) throw new SfdxError(messages.getMessage('errorKeyGeneration'));
-      results.push({
-        filename: `${this.flags.env}.encoded.private.key`,
-        content: key
-      });
-      openssl.generateCSR(CSR_OPTIONS, key, this.flags.password, (errCSR, csr, cmdCSR) => {
-        if (errCSR) throw new SfdxError(messages.getMessage('errorKeyGeneration'));
-        openssl.selfSignCSR(csr, {}, key, this.flags.password, (errCRT, crt, cmdCRT) => {
-          if (errCRT) throw new SfdxError(messages.getMessage('errorKeyGeneration'));
-          results.push({
-            filename: `${this.flags.env}.crt`,
-            content: crt
-          });
-          if (this.flags.verbose) {
-            this.ux.log(cmdKEY);
-            this.ux.log(cmdCSR);
-            this.ux.log(cmdCRT);
-          }
-          results.forEach(file => {
-            fs.writeFile(path.resolve(this.flags.output, file.filename), file.content, err => {
-              if (err) throw new SfdxError(messages.getMessage('errorCopyFailed', [file.filename, path.resolve(this.flags.output)]));
-              this.ux.log(messages.getMessage('successCopy', [file.filename, path.resolve(this.flags.output)]));
-            });
-          });
-        });
-      });
-    });
+    fse.ensureDirSync(tmpFolder);
+    try {
+      execSync(`openssl genrsa -des3 -passout pass:x -out ${path.join(tmpFolder, 'server.pass.key')} 2048 2>/dev/null`);
+      execSync(`openssl rsa -passin pass:x -in ${path.join(tmpFolder, 'server.pass.key')} -out ${path.join(tmpFolder, 'server.key')}  2>/dev/null`);
+      execSync(`openssl req -new -key ${path.join(tmpFolder, 'server.key')} -out ${path.join(tmpFolder, 'server.csr')} -subj "/C=FR/ST=FRANCE/L=PARIS/O=sfdx/OU=sfdx:auth:jwt/CN=jwt/emailAddress=sfdx@jwt.auth"  2>/dev/null`);
+      execSync(`openssl x509 -req -sha256 -days 365 -in ${path.join(tmpFolder, 'server.csr')} -signkey ${path.join(tmpFolder, 'server.key')} -out ${path.join(this.flags.output, this.flags.env + '.crt')}  2>/dev/null`);
+      execSync(`openssl aes-256-cbc -salt -e -in ${path.join(tmpFolder, 'server.key')} -out ${path.join(this.flags.output, this.flags.env + '_server.key.enc')} -pass pass:${this.flags.password}  2>/dev/null`);
+    } catch (ex) {
+      throw new SfdxError(messages.getMessage('errorKeyGeneration'));
+    }
+    fse.removeSync(tmpFolder);
+    this.ux.log(messages.getMessage('successCopy', [`${this.flags.env}_server.key.enc`, path.resolve(this.flags.output)]));
+    this.ux.log(messages.getMessage('successCopy', [`${this.flags.env}.crt`, path.resolve(this.flags.output)]));
     return null;
   }
 }
