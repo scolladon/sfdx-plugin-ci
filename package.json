@@ -35,7 +35,8 @@
   "files": [
     "/lib",
     "/messages",
-    "/npm-shrinkwrap.json",
+    "/template",
+    "/yarn.lock",
     "/oclif.manifest.json"
   ],
   "homepage": "https://github.com/scolladon/sfdx-plugin-ci",
