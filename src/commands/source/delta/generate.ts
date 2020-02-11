@@ -26,11 +26,11 @@ export default class SourceDeltaGenerate extends SfdxCommand {
 
     public async run(): Promise<AnyJson> {
         return sgd({
-            'to': this.flags.to,
-            'from': this.flags.from,
-            'output': this.flags.output,
-            'apiVersion': this.flags['api-version'],
-            'repo': this.flags.repo
+            to: this.flags.to,
+            from: this.flags.from,
+            output: this.flags.output,
+            apiVersion: this.flags['api-version'],
+            repo: this.flags.repo
         }, this.ux.log);
     }
 }
