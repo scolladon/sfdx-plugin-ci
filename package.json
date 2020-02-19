@@ -12,6 +12,7 @@
     "@salesforce/core": "^2",
     "command-exists": "^1.2.8",
     "fs-extra": "^8.1.0",
+    "sfdx-git-delta": "^2.0.9",
     "tslib": "^1"
   },
   "devDependencies": {
