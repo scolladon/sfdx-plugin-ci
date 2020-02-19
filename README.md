@@ -153,6 +153,8 @@ OPTIONS
                                                                                     this command invocation
 ```
 
+_See code: [lib/commands/source/delta/generate.js](https://github.com/scolladon/sfdx-plugin-ci/blob/v0.1.0/lib/commands/source/delta/generate.js)_
+
 ## `sfdx vcs:setup:git [-o <directory>] [-r] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
 Create the '.gitignore' and '.gitattributes' file in the <output> folder
