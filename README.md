@@ -16,7 +16,7 @@ $ npm install -g sfdx-plugin-ci
 $ sfdx COMMAND
 running command...
 $ sfdx (-v|--version|version)
-sfdx-plugin-ci/0.1.0 darwin-x64 node-v10.16.3
+sfdx-plugin-ci/1.0.0 darwin-x64 node-v10.16.3
 $ sfdx --help [COMMAND]
 USAGE
   $ sfdx COMMAND
@@ -50,7 +50,7 @@ OPTIONS
                                                                                     this command invocation
 ```
 
-_See code: [lib/commands/ci/setup/bitbucket.js](https://github.com/scolladon/sfdx-plugin-ci/blob/v0.1.0/lib/commands/ci/setup/bitbucket.js)_
+_See code: [lib/commands/ci/setup/bitbucket.js](https://github.com/scolladon/sfdx-plugin-ci/blob/v1.0.0/lib/commands/ci/setup/bitbucket.js)_
 
 ## `sfdx ci:setup:gitlab [-o <directory>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
@@ -71,7 +71,7 @@ OPTIONS
                                                                                     this command invocation
 ```
 
-_See code: [lib/commands/ci/setup/gitlab.js](https://github.com/scolladon/sfdx-plugin-ci/blob/v0.1.0/lib/commands/ci/setup/gitlab.js)_
+_See code: [lib/commands/ci/setup/gitlab.js](https://github.com/scolladon/sfdx-plugin-ci/blob/v1.0.0/lib/commands/ci/setup/gitlab.js)_
 
 ## `sfdx ci:setup:jwt -p <string> [-o <directory>] [-e <string>] [--verbose] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
@@ -100,7 +100,7 @@ OPTIONS
                                                                                     stdout
 ```
 
-_See code: [lib/commands/ci/setup/jwt.js](https://github.com/scolladon/sfdx-plugin-ci/blob/v0.1.0/lib/commands/ci/setup/jwt.js)_
+_See code: [lib/commands/ci/setup/jwt.js](https://github.com/scolladon/sfdx-plugin-ci/blob/v1.0.0/lib/commands/ci/setup/jwt.js)_
 
 ## `sfdx ci:setup:pmd [-o <directory>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
@@ -121,7 +121,7 @@ OPTIONS
                                                                                     this command invocation
 ```
 
-_See code: [lib/commands/ci/setup/pmd.js](https://github.com/scolladon/sfdx-plugin-ci/blob/v0.1.0/lib/commands/ci/setup/pmd.js)_
+_See code: [lib/commands/ci/setup/pmd.js](https://github.com/scolladon/sfdx-plugin-ci/blob/v1.0.0/lib/commands/ci/setup/pmd.js)_
 
 ## `sfdx source:delta:generate [-t <string>] [-f <string>] [-o <filepath>] [-a <number>] [-r <filepath>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
@@ -153,7 +153,7 @@ OPTIONS
                                                                                     this command invocation
 ```
 
-_See code: [lib/commands/source/delta/generate.js](https://github.com/scolladon/sfdx-plugin-ci/blob/v0.1.0/lib/commands/source/delta/generate.js)_
+_See code: [lib/commands/source/delta/generate.js](https://github.com/scolladon/sfdx-plugin-ci/blob/v1.0.0/lib/commands/source/delta/generate.js)_
 
 ## `sfdx vcs:setup:git [-o <directory>] [-r] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
@@ -180,7 +180,7 @@ OPTIONS
                                                                                     this command invocation
 ```
 
-_See code: [lib/commands/vcs/setup/git.js](https://github.com/scolladon/sfdx-plugin-ci/blob/v0.1.0/lib/commands/vcs/setup/git.js)_
+_See code: [lib/commands/vcs/setup/git.js](https://github.com/scolladon/sfdx-plugin-ci/blob/v1.0.0/lib/commands/vcs/setup/git.js)_
 <!-- commandsstop -->
 * [`sfdx ci:setup:bitbucket [-o <directory>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-cisetupbitbucket--o-directory---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 * [`sfdx ci:setup:gitlab [-o <directory>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-cisetupgitlab--o-directory---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
