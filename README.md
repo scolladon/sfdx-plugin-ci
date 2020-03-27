@@ -16,7 +16,7 @@ $ npm install -g sfdx-plugin-ci
 $ sfdx COMMAND
 running command...
 $ sfdx (-v|--version|version)
-sfdx-plugin-ci/1.0.0 darwin-x64 node-v10.16.3
+sfdx-plugin-ci/1.0.0 darwin-x64 node-v13.11.0
 $ sfdx --help [COMMAND]
 USAGE
   $ sfdx COMMAND
@@ -29,6 +29,7 @@ USAGE
 * [`sfdx ci:setup:jwt -p <string> [-o <directory>] [-e <string>] [--verbose] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-cisetupjwt--p-string--o-directory--e-string---verbose---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 * [`sfdx ci:setup:pmd [-o <directory>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-cisetuppmd--o-directory---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 * [`sfdx source:delta:generate [-t <string>] [-f <string>] [-o <filepath>] [-a <number>] [-r <filepath>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-sourcedeltagenerate--t-string--f-string--o-filepath--a-number--r-filepath---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
+* [`sfdx source:prepare:ppset -p <array> [-s <array>] [-t <array>] [-r <array>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-sourceprepareppset--p-array--s-array--t-array--r-array---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 * [`sfdx vcs:setup:git [-o <directory>] [-r] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-vcssetupgit--o-directory--r---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 
 ## `sfdx ci:setup:bitbucket [-o <directory>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
@@ -154,6 +155,40 @@ OPTIONS
 ```
 
 _See code: [lib/commands/source/delta/generate.js](https://github.com/scolladon/sfdx-plugin-ci/blob/v1.0.0/lib/commands/source/delta/generate.js)_
+
+## `sfdx source:prepare:ppset -p <array> [-s <array>] [-t <array>] [-r <array>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
+
+prepare profile and permission
+
+```
+USAGE
+  $ sfdx source:prepare:ppset -p <array> [-s <array>] [-t <array>] [-r <array>] [--json] [--loglevel 
+  trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
+
+OPTIONS
+  -p, --packages=packages
+      (required) package.xml paths to use to filter profile and permission set. Delimiter: ':'
+
+  -r, --user-permissions=user-permissions
+      list of the userPermission to keep. Delimiter: ':'
+
+  -s, --sources=sources
+      sources paths where to apply the filtering (use default if empty). Delimiter: ':'
+
+  -t, --permissions-type=permissions-type
+      list of the permission types to filter with the package 
+      <applicationVisibilities|categoryGroupVisibilities|classAccesses|customMetadataTypeAccesses|customPermissions|custom
+      SettingAccesses|externalDataSourceAccesses|fieldPermissions|layoutAssignments|objectPermissions|pageAccesses|recordT
+      ypeVisibilities|tabVisibilities|tabSettings>. Delimiter: ':'
+
+  --json
+      format output as json
+
+  --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL)
+      [default: warn] logging level for this command invocation
+```
+
+_See code: [lib/commands/source/prepare/ppset.js](https://github.com/scolladon/sfdx-plugin-ci/blob/v1.0.0/lib/commands/source/prepare/ppset.js)_
 
 ## `sfdx vcs:setup:git [-o <directory>] [-r] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
