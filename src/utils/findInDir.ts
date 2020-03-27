@@ -1,10 +1,10 @@
-import * as fs from 'fs'
-import * as path from 'path'
+import * as fs from 'fs';
+import * as path from 'path';
 
-const findInDir = (dir: string, filter: RegExp, fileList: Array<string> = []): Array<string> => {
+const findInDir = (dir: string, filter: RegExp, fileList: string[] = []): string[] => {
     const files = fs.readdirSync(dir);
 
-    files.forEach((file) => {
+    files.forEach(file => {
         const filePath = path.join(dir, file);
         const fileStat = fs.lstatSync(filePath);
 
@@ -16,6 +16,6 @@ const findInDir = (dir: string, filter: RegExp, fileList: Array<string> = []): A
     });
 
     return fileList;
-}
+};
 
 export { findInDir };
