@@ -1,7 +1,7 @@
 {
   "name": "sfdx-plugin-ci",
   "description": "CI Scaffolder and Helper plugin",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": "Sébastien Colladon @scolladon",
   "bugs": "https://github.com/scolladon/sfdx-plugin-ci/issues",
   "dependencies": {
