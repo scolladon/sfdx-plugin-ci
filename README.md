@@ -16,7 +16,7 @@ $ npm install -g sfdx-plugin-ci
 $ sfdx COMMAND
 running command...
 $ sfdx (-v|--version|version)
-sfdx-plugin-ci/1.1.0 darwin-x64 node-v13.11.0
+sfdx-plugin-ci/1.1.0 darwin-x64 node-v13.12.0
 $ sfdx --help [COMMAND]
 USAGE
   $ sfdx COMMAND
@@ -28,7 +28,7 @@ USAGE
 * [`sfdx ci:setup:gitlab [-o <directory>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-cisetupgitlab--o-directory---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 * [`sfdx ci:setup:jwt -p <string> [-o <directory>] [-e <string>] [--verbose] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-cisetupjwt--p-string--o-directory--e-string---verbose---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 * [`sfdx ci:setup:pmd [-o <directory>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-cisetuppmd--o-directory---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
-* [`sfdx source:delta:generate [-t <string>] [-f <string>] [-o <filepath>] [-a <number>] [-r <filepath>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-sourcedeltagenerate--t-string--f-string--o-filepath--a-number--r-filepath---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
+* [`sfdx source:delta:generate [-t <string>] [-f <string>] [-o <filepath>] [-a <number>] [-r <filepath>] [-d] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-sourcedeltagenerate--t-string--f-string--o-filepath--a-number--r-filepath--d---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 * [`sfdx source:prepare:ppset -p <array> [-s <array>] [-t <array>] [-r <array>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-sourceprepareppset--p-array--s-array--t-array--r-array---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 * [`sfdx vcs:setup:git [-o <directory>] [-r] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-vcssetupgit--o-directory--r---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 
@@ -124,17 +124,20 @@ OPTIONS
 
 _See code: [lib/commands/ci/setup/pmd.js](https://github.com/scolladon/sfdx-plugin-ci/blob/v1.1.0/lib/commands/ci/setup/pmd.js)_
 
-## `sfdx source:delta:generate [-t <string>] [-f <string>] [-o <filepath>] [-a <number>] [-r <filepath>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
+## `sfdx source:delta:generate [-t <string>] [-f <string>] [-o <filepath>] [-a <number>] [-r <filepath>] [-d] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
 Create the '%s' template file in the <output> folder
 
 ```
 USAGE
-  $ sfdx source:delta:generate [-t <string>] [-f <string>] [-o <filepath>] [-a <number>] [-r <filepath>] [--json] 
+  $ sfdx source:delta:generate [-t <string>] [-f <string>] [-o <filepath>] [-a <number>] [-r <filepath>] [-d] [--json] 
   [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
 OPTIONS
   -a, --api-version=api-version                                                     [default: 48] salesforce API version
+
+  -d, --generate-delta                                                              generate delta files in <output>
+                                                                                    folder
 
   -f, --from=from                                                                   commit sha from where the diff is
                                                                                     done [git rev-list --max-parents=0

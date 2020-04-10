@@ -4,5 +4,6 @@ module.exports = {
     "fromFlag": "commit sha from where the diff is done [git rev-list --max-parents=0 HEAD]",
     "outputFlag": "source package specific output",
     "apiVersionFlag": "salesforce API version",
-    "repoFlag": "git repository location"
+    "repoFlag": "git repository location",
+    "deltaFlag": "generate delta files in <output> folder"
 };
