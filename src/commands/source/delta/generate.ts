@@ -20,7 +20,7 @@ export default class SourceDeltaGenerate extends SfdxCommand {
         output: flags.filepath({ char: 'o', description: messages.getMessage('outputFlag'), default: './output' }),
         'api-version': flags.number({ char: 'a', description: messages.getMessage('apiVersionFlag'), default: 48.0 }),
         repo: flags.filepath({ char: 'r', description: messages.getMessage('repoFlag'), default: '.' }),
-        'generate-delta': flags.boolean({ char: 'd', description: messages.getMessage('deltaFlag')}),
+        'generate-delta': flags.boolean({ char: 'd', description: messages.getMessage('deltaFlag')})
     };
 
     protected static requiresProject = false;
@@ -32,7 +32,7 @@ export default class SourceDeltaGenerate extends SfdxCommand {
             output: this.flags.output,
             apiVersion: this.flags['api-version'],
             repo: this.flags.repo,
-            generateDelta: this.flags['generate-delta'],
+            generateDelta: this.flags['generate-delta']
         }, this.ux.log);
     }
 }
