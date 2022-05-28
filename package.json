@@ -11,7 +11,7 @@
     "@salesforce/command": "^2.2.0",
     "@salesforce/core": "^2.3.1",
     "command-exists": "^1.2.8",
-    "fs-extra": "^8.1.0",
+    "fs-extra": "^9.0.0",
     "puppeteer": "^3.0.0",
     "sfdx-git-delta": "^3.0.3",
     "tslib": "^1.11.1",
